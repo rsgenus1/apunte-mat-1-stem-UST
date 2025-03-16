@@ -1,0 +1,251 @@
+\documentclass[11pt, twoside]{book}
+\usepackage[letterpaper, includehead]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{enumerate, multicol}
+\usepackage{enumitem}
+
+\usepackage{emptypage}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[most]{tcolorbox}
+\usepackage{imakeidx}
+\usepackage{eso-pic}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{subcaption}
+
+%% configs and definitions
+
+
+%colors
+\definecolor{ustgreen}{HTML}{00685a}
+\definecolor{ustmidgreen}{HTML}{009b87}
+\definecolor{ustlightgreen}{HTML}{00b49d}
+\definecolor{ustorange}{HTML}{ff6d3c}
+\definecolor{ustdarkgreen}{HTML}{004d43}
+\definecolor{graytitle}{HTML}{69827f}
+\definecolor{grayheader}{HTML}{5c706d}
+\definecolor{darkgraytitle}{HTML}{151a19}
+\definecolor{lightbackground}{HTML}{bae7e2}
+\definecolor{ustblue}{HTML}{006db6}
+\definecolor{ustlightblue}{HTML}{69c0d3}
+\definecolor{ustdarkblue}{HTML}{003d6b}
+\definecolor{ustskyblue}{HTML}{4fa8c2}
+\definecolor{usttealblue}{HTML}{006f8e}
+\definecolor{ustred}{HTML}{d94c4c}
+\definecolor{ustdarkred}{HTML}{9e1b32}
+\definecolor{ustlightred}{HTML}{ff8074}
+\definecolor{ustbrickred}{HTML}{9b3d3d}
+\definecolor{ustscarlet}{HTML}{f44e42}
+\definecolor{tablemid}{RGB}{232,251,247}
+\definecolor{tabletop}{RGB}{192, 204, 202}
+
+%format of the title for chapters
+\titleformat{\chapter}[display]
+{\bfseries\large}
+{\LARGE\textcolor{graytitle}{Unidad \thechapter}\\* \titlerule}
+{2pt}
+{\huge \centering\color{darkgraytitle}\titlerule[2pt]\vspace{0.85cm}}
+[\vspace{0.85cm}{\titlerule[2pt]}]
+\titlespacing*{\chapter}{0pt}{-40pt}{40pt}
+
+% fancyhdr
+\newcommand{\numberedchapter}{
+    \cleardoublepage
+    \fancyhead[RE]{{\bfseries \leftmark}}
+    \fancyhead[LO]{{\bfseries \rightmark}}
+}
+\newcommand{\unnumberedchapter}[1]{
+    \cleardoublepage
+    \addcontentsline{toc}{chapter}{#1}
+    \fancyhead[RE]{{\bfseries #1}}
+    \fancyhead[LO]{{}}
+}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{logo}
+\fancyhead[RE]{\large\color{grayheader} Departamento de Ingeniería}
+\fancyfoot[LO]{\small\color{grayheader} Dr. José Alejandro Aburto}
+\fancyfoot[LE,RO]{\color{grayheader} \thepage}
+
+% hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkgraytitle,
+    filecolor=black!30!magenta,
+    urlcolor=black!40cyan,
+    bookmarks=true,
+    pdfauthor={Dr. José Alejandro Aburto Araneda}
+}
+
+%index
+\makeindex[columns=2]
+
+% thm & tcolorboxes numbering
+\newtheorem{theorem}{Teorema}[chapter]
+\newtcolorbox[auto counter, number within=chapter]{definition}[2][]{colback=ustblue!2, colframe=ustblue, fonttitle=\bfseries, title=Definición~\thetcbcounter \hfill \textcolor{ustblue!10}{ #2 #1}}
+\newtcolorbox[auto counter, number within=chapter]{example}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, #1, title=Ejemplo~\thetcbcounter, breakable}
+\newtcolorbox[auto counter, number within=chapter]{examples}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, #1, title=Ejemplos~\thetcbcounter, breakable}
+\newtcolorbox{note}{enhanced, colback=ustred!7, frame style={left color=ustdarkred, right color=ustred}, fonttitle=\bfseries, sharp corners, title=Observación, watermark tikz={\draw[line width=2mm] circle (1cm)
+node{\fontfamily{ptm}\fontseries{b}\fontsize{20mm}{20mm}\selectfont !};}}
+\newtcolorbox{simpleframe}{colframe=ustbrickred, float, enhanced}
+\begin{document}
+% titlepage
+\begin{titlepage}
+    \newgeometry{left=7.5cm}
+    \noindent
+    \begin{flushright}
+        \color{white}{\fontsize{32}{54} \selectfont \textsf{Matemáticas para Ciencias e Ingeniería I}}
+    \end{flushright}
+
+    \makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+    \par
+    \pagecolor{ustmidgreen}
+
+    \noindent {\Large \textcolor{ustdarkgreen}{\textsf{Universidad Santo Tomás}}\ \textcolor{ustlightgreen!10}{\textsf{Facultad de Ingeniería}}}
+    \vfill
+    \noindent
+    \textcolor{ustlightgreen!15}
+    {\Large \textsf{Departamento de Ingeniería}}
+    \vskip\baselineskip
+    \noindent
+    \textcolor{white}{\textsf{2025}}
+\end{titlepage}
+
+\restoregeometry
+\nopagecolor
+
+\tableofcontents
+
+\chapter*{Presentación}
+\addcontentsline{toc}{chapter}{Presentación}
+Este apunte busca ser una guía esencial y concisa para el curso de primer año \emph{Matemáticas para Ciencias e Ingeniería I} que comparten diversas carreras en la Universidad Santo Tomás.
+
+
+Incluye el contenido en pocas palabras, incluyendo ejemplos y ejercicios propuestos. En versiones posteriores se pretende agregar:
+\begin{enumerate}[label=\roman*)]
+    \item Ejercicios resueltos, con mayor complejidad que los ejemplos básicos del contenido
+    \item Agregar un solucionario para los ejercicios
+    \item Añadir una sección o subsección en cada capitulo con ideas o problemas interesantes para profundizar
+    \item Añadir una bibliografía
+\end{enumerate}
+
+\chapter{Lógica y Polinomios}
+\section{Lógica proposicional}
+Comencemos con una definición fundamental. Queremos formalizar el concepto de \emph{proposición}, las cuales trabajaremos usualmente como incógnitas y operaremos con operaciones binarias (que requieren dos) semejantes a la suma o al producto usuales.
+\begin{definition}{Proposición}
+    Una proposición es una expresión que puede poseer solo uno de dos valores: \textbf{verdadero} ó \textbf{falso}.
+\end{definition}
+Podemos comenzar pensando en qué no es una proposición, y hay muchísimos ejemplo: todas las preguntas no son proposiciones. Primero tenemos proposiciones en el lenguaje cotidiano, y también expresiones matemáticas.
+\begin{example}
+    \begin{enumerate}
+        \item Todos los alumnos de la UST deben sacar \(5.5\) o más para eximirse.
+        \item El número \(5\) es par.
+        \item La ecuación \(x^2+x+1\) no tiene solución en los números reales.
+        \item Todos los gatos son grises.
+    \end{enumerate}
+\end{example}
+
+
+Tendremos tres operaciones:
+\begin{itemize}[label=\(\bullet\)]
+    \item La conjunción, \enquote{y}, que denotaremos por  \(\wedge\)
+    \item La disyunción, \enquote{ó}, que denotaremos por \(\vee\)
+    \item La negación, \enquote{no}, que denotaremos por \(\neg\)
+\end{itemize}
+\begin{note}
+Hay 3 notaciones para la negación, por ejemplo:
+    \[\neg p=\sim p =\overline{p}\]
+\end{note}
+\section{Tablas de verdad}
+Como las proposiciones solo pueden tener dos valores: \textbf{verdadero} ó \textbf{falso}, podemos describir los resultados de las operaciones al usarlas en una tabla. Este tipo de tabla les llamaremos \textbf{tablas de verdad}. Las siguientes tablas son por definición:
+\begin{table}[h]
+    \centering
+    \begin{subtable}{0.3\linewidth}\centering
+            \begin{tabular}{ccc}
+                \toprule
+                \(p\)   &   \(q\)   &   \(p\wedge q\) \\
+                \midrule
+                \(V\)   &   \(V\)   &   \(V\) \\
+                \rowcolor{tablemid}
+                \(V\)   &   \(F\)   &   \(F\) \\
+                \(F\)   &   \(V\)   &   \(F\) \\
+                \rowcolor{tablemid}
+                \(F\)   &   \(F\)   &   \(F\) \\
+            \end{tabular}
+            \caption{Conjunción}
+    \end{subtable}
+    \hfill
+         \begin{subtable}{0.3\linewidth}\centering
+            \begin{tabular}{ccc}
+                \toprule
+                \(p\)   &   \(q\)   &   \(p\vee q\) \\
+                \midrule
+                \(V\)   &   \(V\)   &   \(V\) \\
+                \rowcolor{tablemid}
+                \(V\)   &   \(F\)   &   \(V\) \\
+                \(F\)   &   \(V\)   &   \(V\) \\
+                \rowcolor{tablemid}
+                \(F\)   &   \(F\)   &   \(F\) \\
+            \end{tabular}
+            \caption{Disyunción}
+    \end{subtable}
+    \hfill
+    \begin{subtable}{0.3\linewidth}\centering
+            \begin{tabular}{cc}
+                \toprule
+                \(p\)   &   \(\overline{p}\) \\
+                \midrule 
+                \(V\)   &   \(F\)   \\
+                \rowcolor{tablemid}
+                \(F\)   &   \(V\)
+            \end{tabular}
+            \caption{Negación}
+\end{subtable}
+\end{table}
+
+
+Podemos utilizar las tablas de verdad para determinar los valores posibles de una proposición compuesta, es decir, una proposición construida con estos operadores usando otras proposiciones. Por ejemplo:
+\begin{example}
+    Consideremos la proposición compuesta: \((p\vee q)\wedge (\overline{p}\vee\overline{q})\). Sería difícil desarrollarlo en solo un paso, por lo que agregaremos columnas a la tabla de manera que nos ayude a calcular el resultado, poniendo partes más simples que forman la proposición compuesta que nos interesa:
+    \begin{center}
+        \begin{tabular}{cccc}
+            \toprule
+            \(p\)   &   \(q\)   &    \(p\vee q\)    &  \(\overline{p}\vee\overline{q}\) \\
+            \midrule
+            \(V\)   &   \(V\)   &   \(V\)           & \(F\) \\
+            \rowcolor{tablemid}
+            \(V\)   &   \(F\)   &   \(V\)           & \(V\)\\
+            \(F\)   &   \(V\)   &   \(V\)           &\(V\)\\
+            \rowcolor{tablemid}
+            \(F\)   &   \(F\)   &   \(F\)           & \(V\)
+        \end{tabular}
+    \end{center}
+Ahora que ya hemos calculado estas proposiciones más simples, podemos calcular los valores posibles de la proposición compuesta inicial:
+    \begin{center}
+        \begin{tabular}{ccccc}
+            \toprule
+            \(p\)   &   \(q\)   &    \(p\vee q\)    &  \(\overline{p}\vee\overline{q}\) & \((p\vee q)\wedge (\overline{p}\vee\overline{q})\)\\
+            \midrule
+            \(V\)   &   \(V\)   &   \(V\)           & \(F\) & \\
+            \rowcolor{tablemid}
+            \(V\)   &   \(F\)   &   \(V\)           & \(V\) &\\
+            \(F\)   &   \(V\)   &   \(V\)           &\(V\)  &\\
+            \rowcolor{tablemid}
+            \(F\)   &   \(F\)   &   \(F\)           & \(V\) & 
+        \end{tabular}
+    \end{center}
+\end{example}
+
+\begin{definition}{Implica}
+    Definimos el conectivo (u operador)	
+\end{definition}
+\end{document}
