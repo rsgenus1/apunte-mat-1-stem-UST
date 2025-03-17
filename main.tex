@@ -1,5 +1,5 @@
-\documentclass[11pt, twoside]{book}
-\usepackage[letterpaper, includehead]{geometry}
+\documentclass[12pt, twoside]{book}
+\usepackage[letterpaper, includehead, bottom=2.5cm, left=3cm, right=3cm, top=2.5cm, headsep=1.25cm]{geometry}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
 \graphicspath{{./images/}}
@@ -8,11 +8,11 @@
 \usepackage{lmodern}
 \usepackage{enumerate, multicol}
 \usepackage{enumitem}
+\usepackage{tocloft}
+\usepackage{amssymb}
 
 \usepackage{emptypage}
-\usepackage{hyperref}
 \usepackage{tikz}
-\usepackage{pgfplots}
 \usepackage[most]{tcolorbox}
 \usepackage{imakeidx}
 \usepackage{eso-pic}
@@ -21,7 +21,7 @@
 \usepackage{csquotes}
 \usepackage{booktabs}
 \usepackage{subcaption}
-
+\usepackage{hyperref}
 %% configs and definitions
 
 
@@ -65,25 +65,25 @@
 }
 \newcommand{\unnumberedchapter}[1]{
     \cleardoublepage
-    \addcontentsline{toc}{chapter}{#1}
+    \addcontentsline{t oc}{chapter}{#1}
     \fancyhead[RE]{{\bfseries #1}}
     \fancyhead[LO]{{}}
 }
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{logo}
-\fancyhead[RE]{\large\color{grayheader} Departamento de Ingeniería}
+\fancyhead[LE,RO]{\includegraphics[width=2.5cm]{logo_horizontal.png}}
+\fancyhead[RE, LO]{\color{grayheader} Departamento de Ingeniería}
 \fancyfoot[LO]{\small\color{grayheader} Dr. José Alejandro Aburto}
 \fancyfoot[LE,RO]{\color{grayheader} \thepage}
+
 
 % hyperref setup
 \hypersetup{
     colorlinks=true,
-    linkcolor=darkgraytitle,
+    linkcolor=ustdarkblue,
     filecolor=black!30!magenta,
     urlcolor=black!40cyan,
-    bookmarks=true,
-    pdfauthor={Dr. José Alejandro Aburto Araneda}
+    pdfauthor={Dr. José Alejandro Aburto Araneda},
 }
 
 %index
@@ -94,9 +94,32 @@
 \newtcolorbox[auto counter, number within=chapter]{definition}[2][]{colback=ustblue!2, colframe=ustblue, fonttitle=\bfseries, title=Definición~\thetcbcounter \hfill \textcolor{ustblue!10}{ #2 #1}}
 \newtcolorbox[auto counter, number within=chapter]{example}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, #1, title=Ejemplo~\thetcbcounter, breakable}
 \newtcolorbox[auto counter, number within=chapter]{examples}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, #1, title=Ejemplos~\thetcbcounter, breakable}
-\newtcolorbox{note}{enhanced, colback=ustred!7, frame style={left color=ustdarkred, right color=ustred}, fonttitle=\bfseries, sharp corners, title=Observación, watermark tikz={\draw[line width=2mm] circle (1cm)
+\newtcolorbox{note}{enhanced, colback=ustred!7, frame style={left color=ustdarkred, right color=ustred}, fonttitle=\bfseries, sharp corners, title=¡Cuidado!, watermark tikz={\draw[line width=2mm] circle (1cm)
 node{\fontfamily{ptm}\fontseries{b}\fontsize{20mm}{20mm}\selectfont !};}}
 \newtcolorbox{simpleframe}{colframe=ustbrickred, float, enhanced}
+\newtcolorbox[auto counter, number within=chapter]{thm}[2][]{
+    enhanced,
+    breakable,
+    colback=usttealblue!7,
+    frame style={
+        left color=usttealblue,
+        right color=usttealblue!70
+    },
+    fonttitle=\bfseries,
+    title=Teorema~\thetcbcounter \hfill \textcolor{usttealblue!13}{#1} #2
+}
+\newtcolorbox[auto counter, number within=chapter]{observation}[1][]{
+    enhanced,
+    breakable,
+    colback=ustlightgreen!7,
+    frame style={
+        left color=ustlightgreen,
+        right color=ustlightgreen!90
+    },
+    fonttitle=\bfseries,
+    title=Observación~\thetcbcounter \hfill \textcolor{ustlightgreen!13}{#1}
+}
+
 \begin{document}
 % titlepage
 \begin{titlepage}
@@ -114,7 +137,7 @@ node{\fontfamily{ptm}\fontseries{b}\fontsize{20mm}{20mm}\selectfont !};}}
     \vfill
     \noindent
     \textcolor{ustlightgreen!15}
-    {\Large \textsf{Departamento de Ingeniería}}
+    {\large \textsf{Departamento de Ingeniería}}
     \vskip\baselineskip
     \noindent
     \textcolor{white}{\textsf{2025}}
@@ -123,6 +146,8 @@ node{\fontfamily{ptm}\fontseries{b}\fontsize{20mm}{20mm}\selectfont !};}}
 \restoregeometry
 \nopagecolor
 
+\pagenumbering{roman}
+%\thispagestyle{empty}
 \tableofcontents
 
 \chapter*{Presentación}
@@ -137,7 +162,11 @@ Incluye el contenido en pocas palabras, incluyendo ejemplos y ejercicios propues
     \item Añadir una sección o subsección en cada capitulo con ideas o problemas interesantes para profundizar
     \item Añadir una bibliografía
 \end{enumerate}
+\vfill
+\noindent
+Matemáticas para Ciencias e Ingeniería © 2025 by Dr. José Alejandro Aburto is licensed under CC BY-NC-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0
 
+\pagenumbering{arabic}
 \chapter{Lógica y Polinomios}
 \section{Lógica proposicional}
 Comencemos con una definición fundamental. Queremos formalizar el concepto de \emph{proposición}, las cuales trabajaremos usualmente como incógnitas y operaremos con operaciones binarias (que requieren dos) semejantes a la suma o al producto usuales.
@@ -212,6 +241,10 @@ Como las proposiciones solo pueden tener dos valores: \textbf{verdadero} ó \tex
 \end{subtable}
 \end{table}
 
+\begin{note}
+    Las disyunción no es exclusiva, es decir, si decimos \enquote{\(p\) ó \(q\)} pueden ocurrir ambas a la vez. Hay que prestar atención a esto al principio ya que en el lenguaje cotidiano suele ser exclusivo, o sea, solemos elegir solo uno de los dos.
+\end{note}
+
 
 Podemos utilizar las tablas de verdad para determinar los valores posibles de una proposición compuesta, es decir, una proposición construida con estos operadores usando otras proposiciones. Por ejemplo:
 \begin{example}
@@ -244,8 +277,184 @@ Ahora que ya hemos calculado estas proposiciones más simples, podemos calcular 
         \end{tabular}
     \end{center}
 \end{example}
-
+Además, tenemos otro operador que aparece usualmente en matemáticas, por ejemplo en cada resultado. Solemos tener una hipótesis que es aquello que suponemos como cierto y una consecuencia de esos resultados. Podemos pensar en el teorema de Pitágoras como ejemplo, partimos de un triángulo rectángulo en el plano, y como consecuencia obtenemos una ecuación que satisfacen sus lados.
 \begin{definition}{Implica}
-    Definimos el conectivo (u operador)	
+    Definimos el conectivo (u operador)	\textbf{implica} (o \textbf{entonces}) como se indica en la siguiente tabla:
+    \begin{center}
+        \begin{tabular}{ccc}
+            \toprule
+            \(p\)   &   \(q\)   &   \(p\Rightarrow q\) \\
+            \midrule
+            \(V\)   &   \(V\)   &   \(V\)\\
+            \rowcolor{tablemid}
+            \(V\)   &   \(F\)   &   \(F\)\\
+            \(F\)   &   \(V\)   &   \(V\)\\
+            \rowcolor{tablemid}
+            \(F\)   &   \(F\)   &   \(V\)\\
+        \end{tabular}
+    \end{center}
 \end{definition}
+
+Notemos que si completamos la siguiente tabla de verdad:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc}
+          \toprule
+          \(p\)   &   \(q\)   &   \(p\Rightarrow q\)  & \(\overline{p}\vee q\)\\
+            \midrule
+          \(V\)   &   \(V\)   &   \(V\)               & \(V\)\\
+            \rowcolor{tablemid}
+          \(V\)   &   \(F\)   &   \(F\)               & \(F\)\\
+          \(F\)   &   \(V\)   &   \(V\)               & \(V\)\\
+            \rowcolor{tablemid}
+          \(F\)   &   \(F\)   &   \(V\)               & \(V\)\\
+
+    \end{tabular}
+    \caption{Primera equivalencia lógica}
+\end{table}
+    Las dos últimas columnas tienen los mismos valores de verdad pero no son la misma proposición. Por ejemplo, \enquote{dos es un número par} y \enquote{5 es un número primo} tienen el mismo valor de verdad pero no son la misma proposición. Por ello, son equivalentes de cierta forma pero no iguales. Esto motiva usar un símbolo diferente:
+\begin{definition}{Equivalencia lógica}
+    Cuando dos proposiciones (compuestas) \(R\) y \(T\) poseen los mismos valores (en el mismo orden) en la tabla de verdad, diremos que son \textbf{equivalentes} y lo denotaremos por:
+    \[R\equiv T\]
+\end{definition}
+Esto es una relación como equivalencia al igual que la igualdad cuando trabajamos los números reales por dar un ejemplo.
+
+\section{Álgebra Booleana}
+Ahora que tenemos un sentido de \enquote{igualdad}, quisieramos poder desarrollar expresiones como en el álgebra habitual. A esta operatoria y sus propieades les llamamos \textbf{Álgebra Booleana}.
+
+Tenemos varias propiedades que nos serán de utilidad y enlistamos ahora:
+\begin{thm}{Propiedades del álgebra booleana}
+    \begin{enumerate}[label=\roman*.]
+        \item Conmutatividad
+            \[p\wedge q\equiv q\wedge p \qquad p\vee q \equiv q\vee q\]
+        \item 
+        \item 
+        \item 
+    \end{enumerate}
+\end{thm}
+
+Esto nos permite trabajar con proposiciones compuestas de una manera más convienente muchas veces.
+\begin{example}
+    Se tienen 3 proposiciones: \(p\), \(q\), \(r\). Sabemos que \(p\vee q \equiv r \wedge q\), queremos desarrollar y simplificar la siguiente proposición compuesta: \(\left[(p\wedge q)\vee r\right]\vee \overline{r}\). Procedemos a desarrollar utilizando las propiedades anteriores:
+    \begin{align*}
+        \left[(p\vee q)\wedge r\right]\vee \overline{r} & \equiv \left[(r\wedge q)\wedge r\right]\vee \overline{r} \\
+                & \equiv \left[(q\wedge r)\wedge r\right]\vee \overline{r} \\
+                & \equiv \left[(q\wedge (r\wedge r)\right]\vee \overline{r} \\
+                & \equiv \left[q\wedge r\right]\vee\overline{r} \\
+                & \equiv (q\vee\overline{r})\wedge(r\vee\overline{r}) \\
+                & \equiv (q\vee\overline{r})\wedge V \\
+                & \equiv q\vee\overline{r}.
+    \end{align*}
+\end{example}
+Aunque en general podríamos obtener un resultado solo en incógnitas, a veces podremos hallar el valor.
+\begin{example}
+    Tenemos que
+    \begin{align*}
+        (p\wedge q)\vee(p\Rightarrow\overline{q})
+        & \equiv 
+    \end{align*}
+\end{example}
+
+Ya sea con álgebra booleana o con las tablas de verdad, a veces ocurrirá que sin importar los casos una proposición compuesta sea verdadera, falsa o con un valor indeterminado. Esto tiene un nombre definido como sigue:
+\begin{definition}{Tautología - Contingencia - Contradicción}
+    Si una proposición compuesta da como resultado
+        \begin{itemize}[label=\(\bullet\)]
+                \item verdadero, le llamaremos \textbf{Tautología}
+                \item falso, le llamaremos \textbf{Contradicción}
+                \item indeterminado, le llamaremos \textbf{Contingencia}
+        \end{itemize}
+\end{definition}
+\begin{note}
+    El que una contingencia tenga un valor indeterminado significa que depende de los valores de \(p,q,r,\ldots\).
+\end{note}
+
+\section{Funciones Proposicionales}
+\begin{definition}{Función proposicional}
+    Una \textbf{función proposicional} es una función que toma como argumento un elemento de un universo definido y devuelve una proposición.
+\end{definition}
+\begin{example}
+    Tenemos las siguientes funciones proposicionales:
+    \begin{enumerate}[label=\roman*.]
+        \item \(q(k)\equiv \text{\(k\) es par y mayor que \(5\)}\)
+        \item \(F(x)\equiv x^2+x+1=0\)
+        \item \(r(t)\equiv t \text{ es divisible por \(3\)}\)
+    \end{enumerate}
+\end{example}
+En estos casos no hemos definido un universo, el cual es el dominio de la función. Sin embargo, si el contexto es claro podemos omitir esta información. 
+\begin{observation}
+    En general tendremos dos usos para las funciones proposicionales: Uno será con cuantificadores lógicos y el otro en la definción de conjuntos. En ambos casos estará escrito con claridad cuál es el universo en el que estaremos trabajando.
+\end{observation}
+
+\section{Cuantificadores Lógicos}
+Para describir qué tanto una función proposicional nos proporciona proposiciones verdaderas, utilizaremos cuantificadores lógicos. 
+\begin{definition}{Cuantificador Lógico}
+    Un \textbf{cuantificador lógico} es un operador que se aplica a las funciones proposicionales para indicar qué tantas proposiciones resultan ser verdaderas. Tenemos tres cuantificadores:
+    \begin{itemize}[label=\(\bullet\)]
+        \item \textbf{Para todo / Para cada}: \(\forall\)
+        \item \textbf{Existe alguno / Hay algún}: \(\exists\)
+        \item \textbf{Existe un único}: \(\exists!\)
+    \end{itemize}
+\end{definition}
+\begin{example}
+    \begin{enumerate}
+    \item \enquote{Todos los números enteros son pares ó impares} podemos escribirlo como:
+        \[\forall n\in\mathbb{Z}: n\text{ es par} \vee n\text{ es impar}\]
+    \item \enquote{Existe un número par} podemos escribirlo como:
+        \[\exists n\in\mathbb{Z}: n\text{ es par}\]
+    \item \enquote{Para cada número natural hay un número primo mayor que él} podemos escribirlo como:
+        \[\forall n\in\mathbb{N},~ \exists p\in\mathbb{N}: p\text{ es primo} ~ \wedge ~ p>n\]
+    \end{enumerate}
+\end{example}
+Para determinar el valor de verdad de cada una de las proposiciones compuestas en las que está involucrado un cuantificador lógico, tenemos que seguir los siguientes razonamientos:
+\begin{observation}
+    \begin{itemize}[label=\(\bullet\)]
+        \item Para que un \textbf{para todo} sea verdad, necesitamos que todos los elementos del universo nos dé verdadero al pasarlos por la función proposicional, por ello, si tan solo uno de los elementos nos da como resultado una proposición falsa, el para todo será falso.
+
+        \item Para que un \textbf{existe} sea verdadero bastará con que uno de los elementos del universo nos de verdadero, sin importar si hay varios que nos sirvan para esto, con uno basta. Por otro lado, si todos nos dan como resultado una proposición falsa, el existe será falso.
+
+        \item Para que un \textbf{existe un único} sea verdadero, necesitaremos que haya un elemento del universo que nos de verdadero, y además que todos los demás sean falsos. Por lo tanto, el existe un único será falso si hay dos \emph{elementos diferentes} que nos dan una proposición verdadera, ó si todos los elementos del universo nos dan falso.
+    \end{itemize}
+\end{observation}
+\begin{example}
+    \begin{enumerate}
+        \item \enquote{Todos los números enteros son pares} podemos escribirlo como:
+            \[\forall n\in\mathbb{Z}: n\text{ es par}\]
+        En este caso, esta proposición es \textbf{falsa}. Esto, debido a que existe un\footnote{si hay más no importa, solo nos interesa que haya al menos un elemento del universo que resulte en una proposición falsa para que el \textbf{para todo} sea falso.} número entero que no es par, particularmente \(n=3\).
+    \item 
+    \end{enumerate}
+\end{example}
+Ahora quisieramos saber como resulta ser la negación de una de estas proposiciones compuestas en las que hay cuantificadores lógicos involucrados.
+\section{Conjuntos}
+
+\section{Conjuntos numéricos}
+
+\section{Polinomios}
+
+\section{División de polinomios}
+\section{Teorema del Resto}
+\section{Ceros Reales y Racionales}
+
+\section{Números complejos}
+
+\chapter{Geometría Analítica}
+
+\chapter{Trigonometría y Relación de Orden}
+
+\chapter{Funciones y Límites}
+
+
+
+\printindex
+
+\begin{titlepage}
+    \newgeometry{left=7.5cm}
+
+    \makebox[0pt][l]{\rule{1.3\textwidth}{0pt}}
+    \par
+    \pagecolor{ustmidgreen}
+
+    \noindent
+\end{titlepage}
+
+\nopagecolor
 \end{document}
