@@ -283,12 +283,12 @@ Ahora que ya hemos calculado estas proposiciones más simples, podemos calcular 
             \toprule
             \(p\)   &   \(q\)   &    \(p\vee q\)    &  \(\overline{p}\vee\overline{q}\) & \((p\vee q)\wedge (\overline{p}\vee\overline{q})\)\\
             \midrule
-            \(V\)   &   \(V\)   &   \(V\)           & \(F\) & \\
+            \(V\)   &   \(V\)   &   \(V\)           & \(F\) & \(F\)\\
             \rowcolor{tablemid}
-            \(V\)   &   \(F\)   &   \(V\)           & \(V\) &\\
-            \(F\)   &   \(V\)   &   \(V\)           &\(V\)  &\\
+            \(V\)   &   \(F\)   &   \(V\)           & \(V\) &\(V\)\\
+            \(F\)   &   \(V\)   &   \(V\)           &\(V\)  &\(V\)\\
             \rowcolor{tablemid}
-            \(F\)   &   \(F\)   &   \(F\)           & \(V\) & 
+            \(F\)   &   \(F\)   &   \(F\)           & \(V\) & \(F\)
         \end{tabular}
     \end{center}
 \end{example}
@@ -366,7 +366,9 @@ Aunque en general podríamos obtener un resultado solo en incógnitas, a veces p
     Tenemos que
     \begin{align*}
         (p\wedge q)\vee(p\Rightarrow\overline{q})
-        & \equiv 
+        & \equiv (p\wedge q)\vee(\overline{p}\vee \overline{q}) \\
+        & \equiv (p\wedge q)\vee \overline{\left(p\wedge q\right)} \\
+        & \equiv V
     \end{align*}
 \end{example}
 
@@ -512,7 +514,7 @@ Debido a que puede resultar ser complicado definir un conjunto de una manera for
 \end{note}
 
 \section{Operaciones entre Conjuntos y Diagrama de Venn}
-Tenemos tres operaciones elementales, la \textbf{uniión}, la \textbf{intersección} y el \textbf{complemento}. Cada uno se obtendrá de las tres operaciones en lógica.
+Tenemos tres operaciones elementales, la \textbf{unión}, la \textbf{intersección} y el \textbf{complemento}. Cada uno se obtendrá de las tres operaciones en lógica.
 
 Denotaremos el universo por \(U\) a menos que se indique lo contrario.
 \begin{definition}{Operaciones entre Conjuntos}
@@ -524,17 +526,33 @@ Denotaremos el universo por \(U\) a menos que se indique lo contrario.
 
         \item \textbf{Complemento}:
             \[U\setminus A=A^c=\set{x\in U: x\notin A}\]
+        \item \textbf{Diferencia}\footnote{Notemos que el símbolo que utilizamos es como un menos pero inclinado. Así lo diferenciamos del menos usual}:
+            \[A\setminus B=\set{x\in U: x\in A\wedge x\notin B}\]
     \end{itemize}
 \end{definition}
 Para facilitar la compresión veamos unos ejemplos concretos sencillos:
 \begin{example}
     Consideremos los siguientes conjuntos:
-    \[A=\set{-1,1,3,6,10},\qquad B=\set{1,5,10}\]
+    \[A=\set{-1,1,3,6,8},\qquad B=\set{1,5,8}\]
+    \[U=\set{-1,0,1,2,3,4,5,6,7,8}\]
     Y así, tenemos que:
     \begin{enumerate}[label=\alph*)]
-        \item 
+        \item La unión de \(A\) y \(B\) es contiene los elementos de ambos conjuntos:
+            \[A\cup B=\set{-1,1,3,5,6,8}\]
+        \item La intersección de \(A\) y \(B\) es el conjunto de los elementos que pertenecen a ambos conjuntos a la vez:
+            \[A\cap B=\set{1,8}\]
+        \item El complemento de \(A\) es el conjunto de todos los elementos que no pertenecen a \(A\):
+            \[U\setminus A=\set{0,2,4,5,7}\]
+        \item La diferencia de \(A\) y \(B\) es el conjunto de los elementos de \(A\) que no pertenecen a \(B\):
+            \[A\setminus B=\set{-1,3,6}\]
     \end{enumerate}
 \end{example}
+\begin{note}
+    La diferencia de \(A\) y \(B\) solo quita elementos a el conjunto \(A\). Si \(B\) tiene elementos que \(A\) no posee, son totalmente ignorados. Por ejemplo, si \({A=\set{1,2}}\) y \({B=\set{2,3,4,5}}\), obtendremos que \({A\setminus B=\set{1}}\).
+
+
+Notar además que \(B\setminus A=\set{3,4,5}\).
+\end{note}
 
 %% diagramas
 Podemos representar los conjuntos de una manera gráfica, especialmente cuando se trata de conjuntos abstractos ó si son de finitos elementos (no son infinitos). En el caso de los conjuntos abstractos, estos diagramas nos ayudarán a comprender mejor las operaciones entre conjuntos ya que podremos visualizarlas fácilmente.
