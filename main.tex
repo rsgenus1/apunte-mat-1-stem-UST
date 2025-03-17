@@ -125,7 +125,7 @@ node{\fontfamily{ptm}\fontseries{b}\fontsize{20mm}{20mm}\selectfont !};}}
 
 \newtcolorbox[auto counter, number within=chapter]{observation}[1][]{
     enhanced,
-    breakable,
+    %breakable,
     colback=ustlightgreen!7,
     frame style={
         left color=ustlightgreen,
@@ -342,9 +342,27 @@ Tenemos varias propiedades que nos serán de utilidad y enlistamos ahora:
     \begin{enumerate}[label=\roman*.]
         \item Conmutatividad
             \[p\wedge q\equiv q\wedge p \qquad p\vee q \equiv q\vee q\]
-        \item 
-        \item 
-        \item 
+        \item Identidad
+            \[p\wedge V\equiv p, \quad p\wedge F\equiv F, \quad p\vee V\equiv V,\quad p\vee F\equiv p \]
+        \item Idempotencia
+            \[p\wedge p\equiv p, \qquad p\vee p\equiv p \]
+        \item Involución
+            \[\overline{\overline{p}}\equiv p\]
+        \item Complemento 
+            \[p\wedge \overline{p}\equiv F, \qquad p\vee \overline{p}\equiv V \]
+        \item Asociatividad
+            \[p\wedge (q\wedge r)\equiv (p\wedge q)\wedge r, \qquad p\vee (q\vee r)\equiv (p\vee q)\vee r \]
+        \item Distributividad
+            \begin{align*}
+                p\wedge(q\vee r) & \equiv (p\wedge q)\vee (p\wedge r) \\
+                p\vee(q\wedge r) & \equiv (p\vee q)\wedge (p\vee r)
+            \end{align*}
+        \item Transitividad
+            \[(p\Rightarrow q)\wedge(q\Rightarrow r)\equiv p\Rightarrow r \]
+        \item Leyes de De Morgan
+            \[\overline{p\vee q}\equiv \overline{p}\wedge\overline{q} \qquad \overline{p\wedge q}\equiv \overline{p}\vee\overline{q}\]
+        \item Absorción
+            \[\left[p\wedge(p\vee q)\right]\equiv p, \qquad \left[p\vee(p\wedge q)\right]\equiv p \]
     \end{enumerate}
 \end{thm}
 
