@@ -48,6 +48,9 @@
 \definecolor{tablemid}{RGB}{232,251,247}
 \definecolor{tabletop}{RGB}{192, 204, 202}
 
+% basic definitions
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+
 %format of the title for chapters
 \titleformat{\chapter}[display]
 {\bfseries\large}
@@ -92,7 +95,7 @@
 % thm & tcolorboxes numbering
 \newtheorem{theorem}{Teorema}[chapter]
 \newtcolorbox[auto counter, number within=chapter]{definition}[2][]{colback=ustblue!2, colframe=ustblue, fonttitle=\bfseries, title=Definición~\thetcbcounter \hfill \textcolor{ustblue!10}{ #2 #1}}
-\newtcolorbox[auto counter, number within=chapter]{example}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, #1, title=Ejemplo~\thetcbcounter, breakable}
+\newtcolorbox[auto counter, number within=chapter]{example}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, title=Ejemplo~\thetcbcounter, breakable, label=#1}
 \newtcolorbox[auto counter, number within=chapter]{examples}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, #1, title=Ejemplos~\thetcbcounter, breakable}
 \newtcolorbox{note}{enhanced, colback=ustred!7, frame style={left color=ustdarkred, right color=ustred}, fonttitle=\bfseries, sharp corners, title=¡Cuidado!, watermark tikz={\draw[line width=2mm] circle (1cm)
 node{\fontfamily{ptm}\fontseries{b}\fontsize{20mm}{20mm}\selectfont !};}}
@@ -108,6 +111,18 @@ node{\fontfamily{ptm}\fontseries{b}\fontsize{20mm}{20mm}\selectfont !};}}
     fonttitle=\bfseries,
     title=Teorema~\thetcbcounter \hfill \textcolor{usttealblue!13}{#1} #2
 }
+\newtcolorbox[auto counter, number within=chapter]{proposition}[2][]{
+    enhanced,
+    breakable,
+    colback=usttealblue!5,
+    frame style={
+        left color=usttealblue!80,
+        right color=usttealblue!60
+    },
+    fonttitle=\bfseries,
+    title=Proposición~\thetcbcounter \hfill \textcolor{usttealblue!13}{#1} #2
+}
+
 \newtcolorbox[auto counter, number within=chapter]{observation}[1][]{
     enhanced,
     breakable,
@@ -420,11 +435,113 @@ Para determinar el valor de verdad de cada una de las proposiciones compuestas e
         \item \enquote{Todos los números enteros son pares} podemos escribirlo como:
             \[\forall n\in\mathbb{Z}: n\text{ es par}\]
         En este caso, esta proposición es \textbf{falsa}. Esto, debido a que existe un\footnote{si hay más no importa, solo nos interesa que haya al menos un elemento del universo que resulte en una proposición falsa para que el \textbf{para todo} sea falso.} número entero que no es par, particularmente \(n=3\).
-    \item 
+    \item \enquote{Existe un único número real que satisface \(x^2-1=0\)} podemos escribirlo como:
+            \[\exists! x\in\mathbb{R}: x^2-1=0\]
+        En este caso, esta proposición es \textbf{falsa}. Esto, debido a que existen dos números reales que satisfacen la proposición, particularmente \({x=1}\) y \({x=-1}\).
     \end{enumerate}
 \end{example}
 Ahora quisieramos saber como resulta ser la negación de una de estas proposiciones compuestas en las que hay cuantificadores lógicos involucrados.
+
+
+Aunque ya hemos hablado acerca de cómo saber una proposición de este tipo es verdadera o falsa, no hemos visto formalmente la negación de estas proposiciones:
+\begin{proposition}{Negación de Cuantificadores Lógicos}
+    Tenemos las siguientes maneras de negar una proposición compuesta con cuantificadores lógicos:
+    \begin{itemize}[label=\(\bullet\)]
+        \item La negación del \textbf{para todo}:
+            \[\neg\left(\forall u\in U: P(u)\right)\equiv \exists u\in U: \neg P(u)\]
+        \item La negación del \textbf{existe}:
+            \[\neg\left(\exists u\in U: P(u)\right)\equiv \forall u\in U: \neg P(u)\]
+        \item La negación del \textbf{existe un único}:
+            \begin{align*}
+            \neg\left(\exists!\ u\in U: P(u)\right) & \equiv \left(\forall u\in U: \neg P(u)\right) \\
+                                                    & \vee \exists u_1,u_2\in U: P(u_1)\wedge P(u_2)\wedge u_1\neq u_2
+            \end{align*}
+    \end{itemize}
+\end{proposition}
+
+\begin{example}
+    Consideremos la proposición siguiente:
+    \[T:\text{\enquote{El cuadrado de cada número real es mayor que 1}}\]
+    La podemos escribir formamente como:
+    \[T: \forall x\in\mathbb{R}: x^2>1\]
+    La negación de esta proposición es:
+    \[\neg T: \exists x\in\mathbb{R}: x^2\leq 1\]
+    Podemos observar que \(\neg T\) es una proposición verdadera ya que por ejemplo \(x=0\) cumple que \(x^2\leq 1\). Por lo tanto, \(T\) es falsa.
+\end{example}
+
+
 \section{Conjuntos}
+Debido a que puede resultar ser complicado definir un conjunto de una manera formal lo entenderemos como una colección de elementos. Tenemos varias maneras de representarlos:
+\begin{definition}{Conjunto}
+    Un \textbf{conjunto} es una colección de elementos de un universo dado. Podemos representarlo mediante:
+    \begin{itemize}[label=\(\bullet\)]
+        \item Definición intensiva (o por compresión): Especificamos un universo, y una propiedad (una proposición) que los elementos deben cumplir.
+        \item Definición extensiva: Especificamos todos los elementos explícitamente.
+        \item Definición ostensiva: Especificamos ejemplos que representan al conjunto.
+    \end{itemize}
+\end{definition}
+\begin{note}
+    Solo la definición intensiva y la extensiva son formales. Esto debido a que la definición ostensiva puede llevar a errores dependiendo de la interpretación que le demos.
+\end{note}
+\begin{example}[example:definiciones_conjuntos]
+    \begin{enumerate}
+        \item Consideremos el conjunto:
+            \[\{x\in\mathbb{R}: x^2-1<0\}\]
+        Este conjunto está definido de manera intensiva ó por comprensión.
+        \item Consideremos el conjunto:
+            \[\{2,3,5,7,9,\pi\}\]
+        Este conjunto está definido de manera extensiva.
+        \item Consideremos el conjunto:
+            \[\{2,3,5,7,\ldots\}\]
+        Este conjunto está definido de manera ostensiva.
+    \end{enumerate}
+\end{example}
+\begin{observation}
+    En el ejemplo \ref{example:definiciones_conjuntos} notemos la manera en que está escrita el conjunto
+    \({x\in\mathbb{R}: x^2-1<0}\). La definición se lee como:
+    \begin{center}
+        \enquote{Todos los reales \(x\) tales que \(x^2-1<0\)}
+    \end{center}
+    Aquí, los dos puntos \enquote{\(:\)} ó bien la barra vertical \enquote{\(|\)} se lee como \enquote{tal que}.
+    
+
+    Además, el símbolo \(\in\) se lee como \enquote{pertenece a}.
+\end{observation}
+\begin{note}
+    La manera ostensiva es solamente una representación informal. Por ejemplo el conjunto \(\{3,5,7,\ldots\}\) podemos interpretarlo de al menos dos maneras. ¿Se trata de números primos mayores que 2 o de números impares mayores que 2?
+\end{note}
+
+\section{Operaciones entre Conjuntos y Diagrama de Venn}
+Tenemos tres operaciones elementales, la \textbf{uniión}, la \textbf{intersección} y el \textbf{complemento}. Cada uno se obtendrá de las tres operaciones en lógica.
+
+Denotaremos el universo por \(U\) a menos que se indique lo contrario.
+\begin{definition}{Operaciones entre Conjuntos}
+    \begin{itemize}[label=\(\bullet\)]
+        \item \textbf{Unión}: 
+            \[A\cup B=\set{x\in U: x\in A\vee x\in B}\]
+        \item \textbf{Intersección}: 
+            \[A\cap B=\set{x\in U: x\in A\wedge x\in B}\]
+
+        \item \textbf{Complemento}:
+            \[U\setminus A=A^c=\set{x\in U: x\notin A}\]
+    \end{itemize}
+\end{definition}
+Para facilitar la compresión veamos unos ejemplos concretos sencillos:
+\begin{example}
+    Consideremos los siguientes conjuntos:
+    \[A=\set{-1,1,3,6,10},\qquad B=\set{1,5,10}\]
+    Y así, tenemos que:
+    \begin{enumerate}[label=\alph*)]
+        \item 
+    \end{enumerate}
+\end{example}
+
+%% diagramas
+Podemos representar los conjuntos de una manera gráfica, especialmente cuando se trata de conjuntos abstractos ó si son de finitos elementos (no son infinitos). En el caso de los conjuntos abstractos, estos diagramas nos ayudarán a comprender mejor las operaciones entre conjuntos ya que podremos visualizarlas fácilmente.
+
+\begin{definition}{Diagrama de Venn}
+    Un \textbf{diagrama de Venn} es una representación gráfica de conjuntos que utiliza figuras geométricas cerradas para representar conjuntos. Particularmente,
+\end{definition}
 
 \section{Conjuntos numéricos}
 

@@ -1,11 +1,11 @@
 # Fdb version 4
-["makeindex main.idx"] 1742074037.07114 "main.idx" "main.ind" "main" 1742243287.36022 0
-  "main.idx" 1742243286.45061 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex main.idx"] 1742074037.07114 "main.idx" "main.ind" "main" 1742249354.90567 0
+  "main.idx" 1742249353.9176 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
   (rewritten before read)
-["pdflatex"] 1742243285.8424 "main.tex" "main.pdf" "main" 1742243287.36034 0
+["pdflatex"] 1742249353.38651 "main.tex" "main.pdf" "main" 1742249354.90578 0
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1741938398 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1741938398 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1741938398 2840 216e6e45ad352e2456e1149f28885bee ""
@@ -23,6 +23,8 @@
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1741938398 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1741938398 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm" 1741938398 520 82a3d37183f34b6eb363a161dfc002c2 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm" 1741938398 520 4889cce2180234b97cad636b6039c722 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy8.tfm" 1741938398 520 7bb3abb160b19e0ed6ac404bb59052b7 ""
   "/usr/share/texmf-dist/fonts/tfm/public/lm/lmex10.tfm" 1741938398 992 ce925c9346c7613270a79afbee98c070 ""
   "/usr/share/texmf-dist/fonts/tfm/public/lm/lmmi10.tfm" 1741938398 1528 6d36b2385e0ca062a654de6ac59cb34f ""
   "/usr/share/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm" 1741938398 1524 753b192b18f2991794f9d41a8228510b ""
@@ -57,6 +59,7 @@
   "/usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb" 1741938398 116908 1fca96723793882c2e0160350c192fc8 ""
   "/usr/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb" 1741938398 116427 4a5b1ccaa7cce719091920a86b58608d ""
   "/usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb" 1741938398 30696 2654571912f9cd384da9f7cb8a60c568 ""
+  "/usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb" 1741938398 30635 833ec815d446ec453a4913fc26d24cbc ""
   "/usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb" 1741938398 119235 f35b44530a1d90eb90fe15d9cba67ea0 ""
   "/usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb" 1741938398 113634 f99c44d58bae0863375faf0e1d74d612 ""
   "/usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb" 1741938398 122174 a7a08406857c9530a0320a2517f60370 ""
@@ -257,11 +260,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1741990791 5467117 e063ce8e53b0cc3d0312473583ebc51c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1741990855 2008270 20d20d4af6e64de71c1ed49ff5682c85 ""
   "images/logo_horizontal.png" 1742232549.22699 220711 3b27770b70d41c956a642d12f2d25b58 ""
-  "main.aux" 1742243287.24224 2847 5ce36fd3abfde76e9607082ebc0e9abe "pdflatex"
-  "main.ind" 1742243287.23665 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1742243287.24399 2591 c5f4e28d17815ab1ca2fa3c3ce3d0f27 "pdflatex"
-  "main.tex" 1742243284.55953 20823 63dec9d73fd2ae17c97b5fe64817268c ""
-  "main.toc" 1742243287.24399 1366 1b025d6acf15805dbc83ab1068f2e4e8 "pdflatex"
+  "main.aux" 1742249354.80181 3725 4ce143948ffd03b6e9080ff1dceaef05 "pdflatex"
+  "main.ind" 1742249354.79662 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
+  "main.out" 1742249354.80334 2895 f907d5967325d27d7429e2dcc0adb48a "pdflatex"
+  "main.tex" 1742249352.89291 26786 1a9f6a24073e15b483ac48c16725d10b ""
+  "main.toc" 1742249354.80334 1475 68a50cc9ee57935b5db6c92c0d0b6ed5 "pdflatex"
   (generated)
   "main.aux"
   "main.idx"
