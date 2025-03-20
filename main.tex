@@ -1,4 +1,4 @@
-\documentclass[12pt, twoside]{book}
+\documentclass[11pt, twoside]{book}
 \usepackage[letterpaper, includehead, bottom=2.5cm, left=3cm, right=3cm, top=2.5cm, headsep=1.25cm]{geometry}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
@@ -10,9 +10,16 @@
 \usepackage{enumitem}
 \usepackage{tocloft}
 \usepackage{amssymb}
-
+\usepackage{float}
 \usepackage{emptypage}
+
 \usepackage{tikz}
+\usetikzlibrary{calc, external}
+%\tikzset{external/storage=./tikzfigures}
+%\tikzexternalize[prefix=external-]
+\usepackage{tkz-euclide}
+\usetikzlibrary{patterns}
+
 \usepackage[most]{tcolorbox}
 \usepackage{imakeidx}
 \usepackage{eso-pic}
@@ -94,7 +101,7 @@
 
 % thm & tcolorboxes numbering
 \newtheorem{theorem}{Teorema}[chapter]
-\newtcolorbox[auto counter, number within=chapter]{definition}[2][]{colback=ustblue!2, colframe=ustblue, fonttitle=\bfseries, title=Definición~\thetcbcounter \hfill \textcolor{ustblue!10}{ #2 #1}}
+\newtcolorbox[auto counter, number within=chapter]{definition}[2][]{float,colback=ustblue!2, colframe=ustblue, fonttitle=\bfseries, title=Definición~\thetcbcounter \hfill \textcolor{ustblue!10}{ #2 #1}}
 \newtcolorbox[auto counter, number within=chapter]{example}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, title=Ejemplo~\thetcbcounter, breakable, label=#1}
 \newtcolorbox[auto counter, number within=chapter]{examples}[1][]{colback=ustgreen!5, colframe=ustgreen, fonttitle=\bfseries, #1, title=Ejemplos~\thetcbcounter, breakable}
 \newtcolorbox{note}{enhanced, colback=ustred!7, frame style={left color=ustdarkred, right color=ustred}, fonttitle=\bfseries, sharp corners, title=¡Cuidado!, watermark tikz={\draw[line width=2mm] circle (1cm)
@@ -534,18 +541,18 @@ Debido a que puede resultar ser complicado definir un conjunto de una manera for
 \section{Operaciones entre Conjuntos y Diagrama de Venn}
 Tenemos tres operaciones elementales, la \textbf{unión}, la \textbf{intersección} y el \textbf{complemento}. Cada uno se obtendrá de las tres operaciones en lógica.
 
-Denotaremos el universo por \(U\) a menos que se indique lo contrario.
+Denotaremos el universo por \(X\) a menos que se indique lo contrario.
 \begin{definition}{Operaciones entre Conjuntos}
     \begin{itemize}[label=\(\bullet\)]
         \item \textbf{Unión}: 
-            \[A\cup B=\set{x\in U: x\in A\vee x\in B}\]
+            \[A\cup B=\set{x\in X: x\in A\vee x\in B}\]
         \item \textbf{Intersección}: 
-            \[A\cap B=\set{x\in U: x\in A\wedge x\in B}\]
+            \[A\cap B=\set{x\in X: x\in A\wedge x\in B}\]
 
         \item \textbf{Complemento}:
-            \[U\setminus A=A^c=\set{x\in U: x\notin A}\]
+            \[U\setminus A=A^c=\set{x\in X: x\notin A}\]
         \item \textbf{Diferencia}\footnote{Notemos que el símbolo que utilizamos es como un menos pero inclinado. Así lo diferenciamos del menos usual}:
-            \[A\setminus B=\set{x\in U: x\in A\wedge x\notin B}\]
+            \[A\setminus B=\set{x\in X: x\in A\wedge x\notin B}\]
     \end{itemize}
 \end{definition}
 Para facilitar la compresión veamos unos ejemplos concretos sencillos:
@@ -577,9 +584,38 @@ Podemos representar los conjuntos de una manera gráfica, especialmente cuando s
 
 \begin{definition}{Diagrama de Venn}
     Un \textbf{diagrama de Venn} es una representación gráfica de conjuntos que utiliza figuras geométricas cerradas para representar conjuntos. Particularmente,
+         \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \tkzDefPoints{-2.75/0/A, 2.75/0/B, 2.75/3/C, -2.75/3/D}
+                    \tkzDrawPolygon(A,B,C,D)
+                    \tkzLabelPoint[right](C){\(X\)}
+
+                    \tkzDefPoint(-0.5,1.5){P1}
+                    \tkzDefPoint(-0.5,0.5){P2}
+
+                    \tkzDefPoint(0.5,1.5){Q1}
+                    \tkzDefPoint(0.5,0.5){Q2}
+                    % shadows
+                    \begin{scope}
+                        \clip (P1) circle (1);
+                        \fill[ustblue!60] (Q1) circle (1);
+                    \end{scope}
+
+                    \tkzDrawCircle(P1,P2)
+                    \tkzDrawCircle(Q1,Q2)
+
+
+                    %labels
+                \tkzDefPoint[label=right: \(B\)](1.5,1.5){L1}
+                \tkzDefPoint[label=left: \(A\)](-1.5,1.5){L2}
+                \end{tikzpicture}
+                \caption{Intersección de \(A\) con \(B\)}
+        \end{figure}
 \end{definition}
 
 \section{Conjuntos numéricos}
+Hay ciertos conjuntos
 
 \section{Polinomios}
 
@@ -588,6 +624,19 @@ Podemos representar los conjuntos de una manera gráfica, especialmente cuando s
 \section{Ceros Reales y Racionales}
 
 \section{Números complejos}
+
+
+\newpage
+\section{Ejercicios}
+\subsection*{Lógica}
+\begin{enumerate}
+    \item Calcule la tabla de verdad de la siguiente proposición:
+            \[\left[p\vee(\overline{p}\wedge q)\right]\Rightarrow q\]
+\end{enumerate}
+\subsection*{Conjuntos}
+\subsection*{Polinomios}
+\subsection*{Números complejos}
+
 
 \chapter{Geometría Analítica}
 
