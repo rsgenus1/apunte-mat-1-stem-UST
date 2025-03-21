@@ -7,5 +7,10 @@
 *.fls
 *.idx
 *.ind
+*.auxlock
+*figure*
+*.bbl
+*.blg
+*.ilg
 
 tufte
