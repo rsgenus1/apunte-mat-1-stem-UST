@@ -794,15 +794,66 @@ Cuando se trata conjuntos con cardinalidad finita, podemos obtener la cardinalid
     Un polinomio es una expresión algebraica de la forma siguiente:
         \[a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\]
     en donde \(a_j\) son coeficientes de algún conjunto en particular, y \(x\) es una variable.
+
+    Denotaremos al conjunto de los polinomios de variable \(x\) y coeficientes en un conjunto \(A\) por \(A[x]\).
 \end{definition}
 En este caso los coeficientes pertenecerán a un conjunto numérico, por ejemplo \(\mathbb{Z}\).
 
 También tenemos que conocer los nombres usuales que utilizaremos para referirnos a ciertas características o partes de un polinomio.
-\begin{definition}{}
+
+%valdra la pena hablar de termino?? casi nunca se usa eso
+\begin{definition}{Grado, coeficiente libre y lider}
+    Sea \(p(x)\in A[x]\), digamos \(p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\). Entonces:
+        \begin{itemize}[label=\(\bullet\)]
+            \item El grado de \(p(x)\) es el mayor exponente de \(x\) que aparece en \(p(x)\).
+            \item El coeficiente libre de \(p(x)\) es el coeficiente libre de la variable \(x\) en \(p(x)\).
+            \item El lider de \(p(x)\) es el coeficiente del t\'ermino de mayor grado en \(p(x)\).
+        \end{itemize}
+\end{definition}
+Veamos algunos ejemplos para clarificar esta definici\'on:
+\begin{example}
+    \begin{enumerate}
+        \item Consideremos el polinomio: \(p(x)=x^3-2x^2+3x-1\). Entonces,
+            \begin{itemize}[label=\(\bullet\)]
+                \item El grado de \(p(x)\) es \(3\).
+                \item El coeficiente libre de \(p(x)\) es \(-1\).
+                \item El lider de \(p(x)\) es \(1\).
+            \end{itemize}
+        \item Consideremos el polinomio: \(q(x)=4x^3+2x\). Entonces,
+            \begin{itemize}[label=\(\bullet\)]
+                \item El grado de \(q(x)\) es \(3\).
+                \item El coeficiente libre de \(q(x)\) es \(2\).
+                \item El lider de \(q(x)\) es \(4\).
+            \end{itemize}
+        \item Consideremos el polinomio: \(r(x)=-x^2-x+6\). Entonces,
+            \begin{itemize}[label=\(\bullet\)]
+                \item El grado de \(r(x)\) es \(2\).
+                \item El coeficiente libre de \(r(x)\) es \(6\).
+                \item El lider de \(r(x)\) es \(-1\).
+            \end{itemize}
+    \end{enumerate}
+\end{example}
+
+%% mucho texto
+En los polinomios tenemos dos operaciones, que son la suma y el producto. Los cuales hereder\'an sus propiedades de la suma y producto que ya tenemos en el conjunto \(A\). 
+% valdra la pena profundizar en las operaciones de los polinomios?? igual hay gente que podria no saber distribuir o no trabajar apropiadamente con el algebra.
+
+Cuando se trata realizar operaciones entre polinomios, hay algunas expresiones que aparecen regularmente y por ello vale la pena conocer, e incluso memorizar ciertas reglas para poder trabajar de una manera más c\'omoda. Estas expresiones recurrentes son conocidas como \textbf{productos notables}, debido a que justamente se trata de ciertos productos entre polinomios.
+
+
+Tendremos una herramienta simple para utilizaremos en algunas potencias de binomios (polinomios de dos t\'erminos).
+\begin{definition}{Tri\'ngulo de Pascal}\index{Tri\'ngulo!de Pascal}
+    Sea \(n\in\mathbb{N}\). El tri\'angulo de Pascal de \(n\) filas es el siguiente arreglo de n\'umeros:
 \end{definition}
 
 \section{División de polinomios}
 \section{Teorema del Resto}
+\begin{definition}{Ra\'iz de un polinomio}\index{Ra\'iz!de un polinomio}
+    Sea \(p(x)\in A[x]\). Una ra\'iz de \(p(x)\) es el elemento \(a\in A\) tal que \(p(a)=0\).
+\end{definition}
+
+
+
 \section{Ceros Reales y Racionales}
 
 \section{Números complejos}
@@ -814,8 +865,32 @@ También tenemos que conocer los nombres usuales que utilizaremos para referirno
 \begin{enumerate}
     \item Calcule la tabla de verdad de la siguiente proposición:
             \[\left[p\vee(\overline{p}\wedge q)\right]\Rightarrow q\]
+    \item Usando tablas de verdad, pruebe que la siguiente proposición es una tautología:
+        \[\left(p\Rightarrow q\right) \iff \left(\overline{q}\Rightarrow \overline{p}\right)\]
+    \item Usando tablas de verdad, pruebe que la siguiente proposición es una contingencia:
+        \[(p\vee q) \Rightarrow (\overline{p}\wedge \overline{q})\] 
 \end{enumerate}
 \subsection*{Conjuntos}
+\begin{enumerate}
+    \item Sean los conjuntos \(A=\set{1,3,5,7}\), \(B=\set{1,3,5,9}\), \(C=\set{9}\).
+        Determine si son verdaderas o falsas las siguiente contenciones:
+        \begin{multicols}{2}
+        \begin{enumerate}[label=\alph*)]
+            \item \(A\subset B\)
+            \item \(B\subset A\)
+            \item \(A\subset C\)
+            \item \(B\subset C\)
+            \item \(C\subset A\)
+            \item \(C\subset B\)
+        \end{enumerate}
+        \end{multicols}
+    \item Determine la cardinalidad de los siguientes conjuntos:
+        \begin{enumerate}[label=\alph*)]
+            \item \(\set{-1, 1,2}\)
+            \item \(\set{\frac39,\frac13,\frac19}\)
+            \item \(\set{2,3,5,7,-\frac42,\frac93}\)
+        \end{enumerate}
+\end{enumerate}
 \subsection*{Polinomios}
 \subsection*{Números complejos}
 
