@@ -1014,6 +1014,12 @@ Ahora nos corresponde estudiar las bases de este interesante objeto matemático.
 El conjunto de los números complejos se define por:
     \[\mathbb{C}=\set{a+bi: a,b\in\mathbb{R}}\]
     en donde \(i^2=-1\).
+
+
+    Además, se define la \textbf{parte real} y la \textbf{parte imaginaria} de un número complejo \({z=a+bi}\), con \(a,b\in\mathbb{R}\), como:
+    \[\Re(z)=a \quad \text{y} \quad \Im(z)=b.\]
+
+    Si la parte real es nula, diremos que el número es \textbf{imaginario puro}. Mientras que si la parte imaginaria es nula diremos que el número es \textbf{real puro}.
 \end{definition}
 
 Las operaciones entre números complejos estás definidas polinomialmente. Aunque esto ya lo hemos visto, es importante nota que la adición de la unidad imaginaria \(i\) propocionará diferencias notables.
@@ -1026,10 +1032,26 @@ Las operaciones entre números complejos estás definidas polinomialmente. Aunqu
             \[\left(a+bi\right)\left(c+di\right)=\left(ac-bd\right)+\left(ad+bc\right)i\]
         \item La conjugación:
         \[\overline{\left(a+bi\right)}=\left(a-bi\right)\]
+        \item El módulo:
+            \[\left|a+bi\right|=\sqrt{a^2+b^2}\]
         \item La inversión:
-            \[\frac{1}{a+bi}=\]
+            \[\frac{1}{a+bi}=\frac{a}{a^2+b^2}+\frac{-b}{a^2+b^2}i\]
     \end{enumerate}
 \end{proposition}
+\begin{example}
+    Calculemos las siguientes operaciones en \(\mathbb{C}\):
+        \begin{enumerate}[label=\alph*)]
+            \item \(\left(2+3i\right)+\left(4+5i\right)=\left(6+8i\right)\)
+            \item \((2-3i)(1+i) = 5-i\)
+            \item \(\overline{\left(4+i\right)}=\left(4-i\right)\)
+            \item \(\left|4-3i\right|=\sqrt{16+9}=\sqrt{25}=5\)
+            \item \(\frac{1}{3+i}=\frac{3}{10}-\frac{1}{10}i\)
+        \end{enumerate}
+\end{example}
+
+\begin{note}
+    Es importante que cuando describimos un número complejo \(z\) de la forma \(z=a+bi\) indiquemos que \(a,b\in\mathbb{R}\).
+\end{note}
 
 \newpage
 \section{Ejercicios}
@@ -1065,8 +1087,14 @@ Las operaciones entre números complejos estás definidas polinomialmente. Aunqu
 \end{enumerate}
 \subsection*{Polinomios}
 \begin{enumerate}
-    \item 
-    \item
+    \item Desarrolle las siguientes expresiones:
+        \begin{enumerate}
+            \item \((x-y)^4\)
+            \item \((x+2)^4\)
+            \item \(\left(x+\frac{1}{x}\right)^3\)
+            \item \((x^2-2)^5\)
+        \end{enumerate}
+    \item Factorice los siguientes polinomios usando productos notables:
     \item Factorice y simplifique la siguiente expresión:
     \item 
 \end{enumerate}
@@ -1075,11 +1103,35 @@ Las operaciones entre números complejos estás definidas polinomialmente. Aunqu
 
 \chapter{Geometría Analítica}
 \section{El plano Euclideano}
+\begin{definition}{Plano Euclideano}
+El \textbf{plano Euclideano}, o el plano Cartesiano. Como conjunto se define como los pares ordenados con coeficientes reales. Formalmente:
+    \[\mathbb{R}=\set{(a,b)\;:\;a,b\in\mathbb{R}}\]
+Podemos representar el plano Euclideano gráficamente, con dos ejes perpendiculares entre si. El \textbf{eje horizontal} se orienta hacia la derecha, y se corresponde con la primera coordenada de un par ordenado.
+El eje \textbf{eje vertical} se orienta hacia arriba, y se corresponde con la segunda coordenada del par ordenado.
+
+Graficamos el plano Euclideano marcando los ejes correspondientes e indicando la variable que representan. Usualmente usaremos \(X\) para el eje horizontal e \(Y\) para el eje vertical.
+Por ejemplo:
+\end{definition}
+
+\begin{note}
+    Que sean pares ordenados significa que el orden en que se escriban los números sí importa. Por ejemplo,
+    \((2,3)\neq (3,2\))
+\end{note}
 
 
 \chapter{Trigonometría y Relación de Orden}
 \section{Trigonometría en el Triángulo}
+Cuando tenemos un triángulo, siempre lo podemos descomponer en triángulos rectángulos, debido a que son más simples de entender.
+Por ejemplo, podemos calcular su área con facilidad, disponemos del Teorema de Pitágoras
+
 \section{Trigonometría en el plano}
+Ya hemos definido las funciones Trigonométricas en triángulos rectángulos, pero esto resulta bastante limitado, ya que las funciones trigonométricas son extremadamente útiles en muchos problemas de moleación matemáticas en el mundo moderno.
+
+
+Necesitamos definir las funciones trigonométricas para cualquier ángulo, para ello primero tenemos que definir una unidad de medida más conveniente para este fin.
+\begin{definition}{Radianes}
+    Un ángulo medido en radianes se corresponde a la medida del arco de una circunferencia unitaria en sentido antihorario comenzando por el eje \(X\) positivo.
+\end{definition}
 \section{Identidades Trigonometricas}
 
 \section{Forma polar de un número complejo}
