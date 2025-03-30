@@ -9,8 +9,8 @@
 *.ind
 *.auxlock
 *figure*
-*.bbl
-*.blg
+*.bbl*
+*.blg*
 *.ilg
 
 tufte
