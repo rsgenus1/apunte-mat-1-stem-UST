@@ -1,4 +1,4 @@
-\documentclass[11pt, twoside]{book}
+\documentclass[11pt, twoside]{memoir}
 \usepackage[letterpaper, includehead, bottom=2.5cm, left=3cm, right=3cm, top=2.5cm, headsep=1.25cm]{geometry}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
@@ -13,7 +13,6 @@
 \usepackage{float}
 \usepackage{emptypage}
 \usepackage[backend=biber, style=numeric]{biblatex}
-    \addbibresource{bibliography.bib}
 
 \usepackage{tikz}
 \usetikzlibrary{calc, external}
@@ -181,29 +180,29 @@
     \begin{document}
     \nocite{*}
     % titlepage
-    \begin{titlepage}
-        \newgeometry{left=7.5cm}
-        \noindent
-        \begin{flushright}
-            \color{white}{\fontsize{32}{54} \selectfont \textsf{Matemáticas para Ciencias e Ingeniería I}}
-        \end{flushright}
+    %\begin{titlepage}
+    %    \newgeometry{left=7.5cm}
+    %    \noindent
+    %    \begin{flushright}
+    %        \color{white}{\fontsize{32}{54} \selectfont \textsf{Matemáticas para Ciencias e Ingeniería I}}
+    %    \end{flushright}
 
-        \makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
-        \par
-        \pagecolor{ustmidgreen}
+    %    \makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+    %    \par
+    %    \pagecolor{ustmidgreen}
 
-        \noindent {\Large \textcolor{ustdarkgreen}{\textsf{Universidad Santo Tomás}}\ \textcolor{ustlightgreen!10}{\textsf{Facultad de Ingeniería}}}
-    \vfill
-    \noindent
-    \textcolor{ustlightgreen!15}
-    {\large \textsf{Departamento de Ingeniería}}
-    \vskip\baselineskip
-    \noindent
-    \textcolor{white}{\textsf{2025}}
-\end{titlepage}
+    %    \noindent {\Large \textcolor{ustdarkgreen}{\textsf{Universidad Santo Tomás}}\ \textcolor{ustlightgreen!10}{\textsf{Facultad de Ingeniería}}}
+    %\vfill
+    %\noindent
+    %\textcolor{ustlightgreen!15}
+    %{\large \textsf{Departamento de Ingeniería}}
+    %\vskip\baselineskip
+    %\noindent
+    %\textcolor{white}{\textsf{2025}}
+    %\end{titlepage}
 
-\restoregeometry
-\nopagecolor
+    %\restoregeometry
+    %\nopagecolor
 
 \pagenumbering{roman}
 %\thispagestyle{empty}
@@ -303,6 +302,7 @@ Como las proposiciones solo pueden tener dos valores: \textbf{verdadero} ó \tex
 \begin{note}
     Las disyunción no es exclusiva, es decir, si decimos \enquote{\(p\) ó \(q\)} pueden ocurrir ambas a la vez. Hay que prestar atención a esto al principio ya que en el lenguaje cotidiano suele ser exclusivo, o sea, solemos elegir solo uno de los dos.
 \end{note}
+
 
 
 Podemos utilizar las tablas de verdad para determinar los valores posibles de una proposición compuesta, es decir, una proposición construida con estos operadores usando otras proposiciones. Por ejemplo:
@@ -1063,6 +1063,10 @@ Las operaciones entre números complejos estás definidas polinomialmente. Aunqu
         \[\left(p\Rightarrow q\right) \iff \left(\overline{q}\Rightarrow \overline{p}\right)\]
     \item Usando tablas de verdad, pruebe que la siguiente proposición es una contingencia:
         \[(p\vee q) \Rightarrow (\overline{p}\wedge \overline{q})\] 
+    \item Usando propiedades simplifique la siguiente expresión:
+        \[(p\wedge q)\Rightarrow (p\vee q)\]
+    \item Usando propiedades pruebe la siguiente equivalencia:
+        \[\left[p\Rightarrow(\overline{p}\vee q)\right]\wedge\left[q\Rightarrow(\overline{q}\vee p)\right]\equiv (p\iff q)\]
 \end{enumerate}
 \subsection*{Conjuntos}
 \begin{enumerate}
@@ -1084,6 +1088,34 @@ Las operaciones entre números complejos estás definidas polinomialmente. Aunqu
             \item \(\set{\frac39,\frac13,\frac19}\)
             \item \(\set{2,3,5,7,-\frac42,\frac93}\)
         \end{enumerate}
+    \item Considere los siguientes conjuntos:
+        \[A=\set{1,3,5,6,7,8,9}\qquad B=\set{1,3,5,7,9}\]
+        \[C=\set{1,2,3,4,5}\]
+        Calcule
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item \(B\setminus C\)
+            \item \((A\cup C)\setminus B\)
+            \item \(A\cup C)\setminus (A\cap B)\)
+            \item \((A\cup B \cup C)\setminus(B\cup C)\)
+        \end{enumerate}
+        \end{multicols}
+    \item En una casa de estudios hay actividades deportivas en la mañana y en la tarde. De un total de 400 estudiantes, 150 de ellos solo hacen actividades deportivas en la mañana, y 225 de ellos solo hace actividades en la tarde. ¿Cuántos estudiantes realizan actividades deportivas en ambas jornadas?
+    \item En un gimnasio se realiza una encuesta en la que se pregunta qué suplementos alimenticios usan. 
+        Se sabe que
+        \begin{multicols}{2}
+        \begin{itemize}[label=\(\bullet\)]
+            \item 80 usan pre-entreno
+            \item 140 usan creatina
+            \item 190 usan proteína en polvo
+            \item 75 usan pre-entreno y proteína en polvo
+            \item 135 usan proteína en polvo y creatina
+            \item 40 usan creatina y pre-entreno
+            \item ninguno usa solo pre-entreno y creatina
+        \end{itemize}
+    \end{multicols}
+    ¿A cuántas personas se le realizó la encuesta?
+
 \end{enumerate}
 \subsection*{Polinomios}
 \begin{enumerate}
@@ -1095,10 +1127,50 @@ Las operaciones entre números complejos estás definidas polinomialmente. Aunqu
             \item \((x^2-2)^5\)
         \end{enumerate}
     \item Factorice los siguientes polinomios usando productos notables:
+            \begin{enumerate}
+                \item \(x^4-y^4\)
+                \item \(x^6-1\)
+                \item \(x^4-1\)
+            \end{enumerate}
+    \item Usando división de polinomios, simplifique la expresión:
+        \[\frac{x^3+2x+1}{x+1}\]
     \item Factorice y simplifique la siguiente expresión:
-    \item 
+        \[\frac{x^2-5x+6}{x-2}\]
+    \item Se sabe que \(2\) y \(-4\) son raíces del polinomio:
+        \[f(x)=x^4+4x^3-19x^2-46x+120\]
+        Factorice \(f(x)\) en factores lineales.
+    \item Factorice el polinomio
+        \(x^3+6x\)
+    \item Considere el polinomio
+        \[2x^3-3x^2-5x+6\]
+        Si se sabe que \(1\) es una raíz.Factorice el polinomio.
+    \item Encuentre el polinomio \(f(x)\) de grado 2 tal que \(f(0)=-10\), \(f(-1)=-5\) y que \(f(0)=-10\).
+    \item Considere el siguiente polinomio:
+        \[f(x)=6x^3-17x^2-5x+6\]
+        \begin{enumerate}
+            \item Encuentre sus raíces racionales.
+            \item Termine de factorizar completamente el polinomio \(f(x)\).
+        \end{enumerate}
+    \item Encuentre todas las raíces racionales del polinomio siguiente:
+        \[30x^4 + 89x^3 + 76x^2 + 11x - 6\]
 \end{enumerate}
 \subsection*{Números complejos}
+\begin{enumerate}
+    \item Determine la parte real y la parte imaginaria de los siguientes números complejos:
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item \(z=6+3i\)
+            \item \(z=1-i\)
+            \item \(z=i\)
+            \item \(z=\frac{1}{1-i}\)
+            \item \(z=\overline{4+5i}\)
+            \item \(z=(1+i)^2\)
+        \end{enumerate}
+    \end{multicols}
+    \item Desarrolle las siguientes expresiones:
+    \item Escriba los siguientes números complejos en su forma binomial
+    \item 
+\end{enumerate}
 
 
 \chapter{Geometría Analítica}
@@ -1148,21 +1220,18 @@ Necesitamos definir las funciones trigonométricas para cualquier ángulo, para 
 \section{Cambios de variable}
 \section{Ejercicios}
 
-
-
-
 \printbibliography%
 \printindex
 
-\begin{titlepage}
-    \newgeometry{left=7.5cm}
-
-    \makebox[0pt][l]{\rule{1.3\textwidth}{0pt}}
-    \par
-    \pagecolor{ustmidgreen}
-
-    \noindent
-\end{titlepage}
+%\begin{titlepage}
+%    \newgeometry{left=7.5cm}
+%
+%    \makebox[0pt][l]{\rule{1.3\textwidth}{0pt}}
+%    \par
+%    \pagecolor{ustmidgreen}
+%
+%    \noindent
+%\end{titlepage}
 
 \nopagecolor
 \end{document}
