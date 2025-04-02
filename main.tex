@@ -1,4 +1,4 @@
-\documentclass[11pt, twoside]{memoir}
+\documentclass[11pt, twoside]{book}%
 \usepackage[letterpaper, includehead, bottom=2.5cm, left=3cm, right=3cm, top=2.5cm, headsep=1.25cm]{geometry}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
@@ -90,14 +90,7 @@
 \fancyfoot[LE,RO]{\color{grayheader} \thepage}
 
 
-% hyperref setup
-\hypersetup{
-    colorlinks=true,
-    linkcolor=ustdarkblue,
-    filecolor=black!30!magenta,
-    urlcolor=black!40cyan,
-    pdfauthor={Dr. José Alejandro Aburto Araneda},
-}
+
 
 %index
 \makeindex[columns=2]
@@ -176,35 +169,43 @@
         fonttitle=\bfseries,
         title=Observación~\thetcbcounter \hfill \textcolor{ustlightgreen!13}{#1}
     }
+% hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ustdarkblue,
+    filecolor=black!30!magenta,
+    urlcolor=black!40cyan,
+    pdfauthor={Dr. José Alejandro Aburto Araneda},
+}
 
-    \begin{document}
-    \nocite{*}
-    % titlepage
-    %\begin{titlepage}
-    %    \newgeometry{left=7.5cm}
-    %    \noindent
-    %    \begin{flushright}
-    %        \color{white}{\fontsize{32}{54} \selectfont \textsf{Matemáticas para Ciencias e Ingeniería I}}
-    %    \end{flushright}
+\begin{document}
+%    \nocite{*}
+    %titlepage
+\begin{titlepage}
+        \newgeometry{left=7.5cm}
+        \noindent
+        \begin{flushright}
+            \color{white}{\fontsize{32}{54} \selectfont \textsf{Matemáticas para Ciencias e Ingeniería I}}
+        \end{flushright}
 
-    %    \makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
-    %    \par
-    %    \pagecolor{ustmidgreen}
+        \makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+        \par
+        \pagecolor{ustmidgreen}
 
-    %    \noindent {\Large \textcolor{ustdarkgreen}{\textsf{Universidad Santo Tomás}}\ \textcolor{ustlightgreen!10}{\textsf{Facultad de Ingeniería}}}
-    %\vfill
-    %\noindent
-    %\textcolor{ustlightgreen!15}
-    %{\large \textsf{Departamento de Ingeniería}}
-    %\vskip\baselineskip
-    %\noindent
-    %\textcolor{white}{\textsf{2025}}
-    %\end{titlepage}
+        \noindent {\Large \textcolor{ustdarkgreen}{\textsf{Universidad Santo Tomás}}\ \textcolor{ustlightgreen!10}{\textsf{Facultad de Ingeniería}}}
+    \vfill
+    \noindent
+    \textcolor{ustlightgreen!15}
+    {\large \textsf{Departamento de Ingeniería}}
+    \vskip\baselineskip
+    \noindent
+    \textcolor{white}{\textsf{2025}}
+\end{titlepage}
 
-    %\restoregeometry
-    %\nopagecolor
+\restoregeometry
+\nopagecolor
 
-\pagenumbering{roman}
+%\pagenumbering{roman}
 %\thispagestyle{empty}
 \tableofcontents
 
@@ -1168,8 +1169,25 @@ Las operaciones entre números complejos estás definidas polinomialmente. Aunqu
         \end{enumerate}
     \end{multicols}
     \item Desarrolle las siguientes expresiones:
+        \begin{multicols}{2}
+        \begin{enumerate}
+            \item \((1+i)^3\)
+            \item \((2+i)(1-i)\)
+            \item \(i^{13}\)
+            \item \((1-i)^4\)
+            \item \((2-3i)^2\)
+            \item \((-2+7i)(1-i)\)
+            \item \(i(3-2i)(2+i)\)
+            \item \(8i+3i^2+5i^3-2i^4\)
+        \end{enumerate}
+    \end{multicols}
     \item Escriba los siguientes números complejos en su forma binomial
-    \item 
+        \begin{enumerate}
+            \item \(\frac{1}{3+4i}\)
+            \item \(\frac{2}{\sqrt{2}-i\sqrt{2}}\)
+            \item \(\frac{1+i}{1-i}\)
+        \end{enumerate}
+    \item Determine un número complejo cuyo módulo es \(2\) y cuya parte real es \(-1\).
 \end{enumerate}
 
 

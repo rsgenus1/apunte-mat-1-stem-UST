@@ -13,4 +13,6 @@
 *.blg*
 *.ilg
 
-tufte
+*
+
+!main.pdf
